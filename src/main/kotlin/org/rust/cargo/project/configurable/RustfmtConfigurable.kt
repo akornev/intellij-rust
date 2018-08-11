@@ -19,7 +19,10 @@ class RustfmtConfigurable(project: Project) : RsConfigurableBase(project) {
     override fun getDisplayName(): String = "Rustfmt"
 
     override fun createComponent(): JComponent? = layout {
-        row("Don't reformat child modules (nightly only):", useSkipChildrenCheckbox)
+        row("Don't reformat child modules (nightly only):", useSkipChildrenCheckbox, """
+            Pass `--skip-children` option to rustfmt not to reformat child modules.
+            Used only for nightly toolchain.
+        """)
     }
 
     override fun isModified(): Boolean = settings.useSkipChildren != useSkipChildren
